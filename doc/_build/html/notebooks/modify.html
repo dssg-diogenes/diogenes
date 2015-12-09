@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Modify Module &mdash; Diogenes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Diogenes 0.0.1 documentation" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Diogenes 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-modify-module">
+<h1>The Modify Module<a class="headerlink" href="#the-modify-module" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../diogenes.modify.html#module-diogenes.modify" title="diogenes.modify"><code class="xref py py-mod docutils literal"><span class="pre">diogenes.modify</span></code></a> provides tools for manipulating arrays and
+generating features.</p>
+<ul class="simple">
+<li>Cleaning<ul>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.replace_missing_vals" title="diogenes.modify.modify.replace_missing_vals"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.replace_missing_vals()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.label_encode" title="diogenes.modify.modify.label_encode"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.label_encode()</span></code></a></li>
+</ul>
+</li>
+<li>Selection<ul>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.choose_cols_where" title="diogenes.modify.modify.choose_cols_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.choose_cols_where()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.choose_rows_where" title="diogenes.modify.modify.choose_rows_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.choose_rows_where()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.remove_cols_where" title="diogenes.modify.modify.remove_cols_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.remove_cols_where()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.remove_rows_where" title="diogenes.modify.modify.remove_rows_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.remove_rows_where()</span></code></a></li>
+</ul>
+</li>
+<li>Feature generation<ul>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.generate_bin" title="diogenes.modify.modify.generate_bin"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.generate_bin()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.normalize" title="diogenes.modify.modify.normalize"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.normalize()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.combine_cols" title="diogenes.modify.modify.combine_cols"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.combine_cols()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.distance_from_point" title="diogenes.modify.modify.distance_from_point"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.distance_from_point()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.where_all_are_true" title="diogenes.modify.modify.where_all_are_true"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.where_all_are_true()</span></code></a></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="in-place-cleaning">
+<h2>In-place Cleaning<a class="headerlink" href="#in-place-cleaning" title="Permalink to this headline">¶</a></h2>
+<p>Diogenes provides two functions for data cleaning:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.replace_missing_vals" title="diogenes.modify.modify.replace_missing_vals"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.replace_missing_vals()</span></code></a>, which replaces
+missing values with valid onces.</li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.label_encode" title="diogenes.modify.modify.label_encode"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.label_encode()</span></code></a> which replaces strings
+with corresponding integers.</li>
+</ul>
+<p>For this example, we&#8217;ll look at Chicago&#8217;s &#8220;311 Service Requests - Tree
+Debris&#8221; data on the Chicago data portal
+(<a class="reference external" href="https://data.cityofchicago.org/">https://data.cityofchicago.org/</a>)</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">diogenes</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">open_csv_url</span><span class="p">(</span><span class="s">&#39;https://data.cityofchicago.org/api/views/mab8-y9h3/rows.csv?accessType=DOWNLOAD&#39;</span><span class="p">,</span>
+                                  <span class="n">parse_datetimes</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;Creation Date&#39;</span><span class="p">,</span> <span class="s">&#39;Completion Date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The last row of this data set repeats the labels. We&#8217;re going to go
+ahead and omit it.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">dtype</span><span class="p">((</span><span class="n">numpy</span><span class="o">.</span><span class="n">record</span><span class="p">,</span> <span class="p">[(</span><span class="s">&#39;Creation Date&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;M8[ns]&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Status&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Completion Date&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;M8[ns]&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Service Request Number&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Type of Service Request&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Current Activity&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Most Recent Action&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Street Address&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ZIP Code&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;X Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Y Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Ward&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Police District&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Community Area&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Longitude&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Location&#39;</span><span class="p">,</span> <span class="s">&#39;O&#39;</span><span class="p">)]))</span>
+</pre></div>
+</div>
+<p>We&#8217;re going to predict whether a job is still open, so our label will
+ultimately be the &#8220;Status&#8221; column.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="k">print</span> <span class="n">Counter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Status&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[(</span><span class="s">&#39;Completed&#39;</span><span class="p">,</span> <span class="mi">94431</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Completed - Dup&#39;</span><span class="p">,</span> <span class="mi">13912</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Open&#39;</span><span class="p">,</span> <span class="mi">144</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Open - Dup&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>We&#8217;ll remove the label from the rest of the data later. First, let&#8217;s do
+some cleaning. Notice that we have some missing data for our floating
+point variables (encoded as numpy.nan)</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="k">print</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;ZIP Code&#39;</span><span class="p">]))</span>
+<span class="k">print</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Ward&#39;</span><span class="p">]))</span>
+<span class="k">print</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;X Coordinate&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">270</span>
+<span class="mi">31</span>
+<span class="mi">39</span>
+</pre></div>
+</div>
+<p>Sklearn can&#8217;t tolerate these missing values, so we have to do something
+with them. Probably, a statistically sound thing to do with this data
+would be to leave these rows out, but for pedagogical purposes, let&#8217;s
+assume it makes sense to impute the data. We can do that with
+<a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.replace_missing_vals" title="diogenes.modify.modify.replace_missing_vals"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.replace_missing_vals()</span></code></a>.</p>
+<p>We could, for instance, replace every nan with a 0:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">data_with_zeros</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">replace_missing_vals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s">&#39;constant&#39;</span><span class="p">,</span> <span class="n">constant</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data_with_zeros</span><span class="p">[</span><span class="s">&#39;ZIP Code&#39;</span><span class="p">]))</span>
+<span class="k">print</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data_with_zeros</span><span class="p">[</span><span class="s">&#39;ZIP Code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">0</span>
+<span class="mi">277</span>
+</pre></div>
+</div>
+<p>Looks like there were a few entries that had 0 for a zip code already.</p>
+<p>For the purposes of this tutorial, we will go ahead and replace missing
+values with the most frequent value in the column:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">replace_missing_vals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s">&#39;most_frequent&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Our data also has a number of string columns. Strings must be converted
+to numbers before Scikit-Learn can analyze them, so we will use
+<a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.label_encode" title="diogenes.modify.modify.label_encode"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.label_encode()</span></code></a> to convert them</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">Counter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">classes</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">label_encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">Counter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">classes</span><span class="p">[</span><span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[(</span><span class="s">&#39;Parkway&#39;</span><span class="p">,</span> <span class="mi">44385</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Alley&#39;</span><span class="p">,</span> <span class="mi">43146</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">16145</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Vacant Lot&#39;</span><span class="p">,</span> <span class="mi">4817</span><span class="p">)]</span>
+<span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">44385</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">43146</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16145</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4817</span><span class="p">)]</span>
+<span class="p">[</span><span class="s">&#39;&#39;</span> <span class="s">&#39;Alley&#39;</span> <span class="s">&#39;Parkway&#39;</span> <span class="s">&#39;Vacant Lot&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal"><span class="pre">classes</span></code> is a dictionary of arrays where each key is the
+column name and each value is an array of which string each number
+represents. For example, if we wanted to find out what category <code class="docutils literal"><span class="pre">1</span></code>
+represents, we would look at:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">classes</span><span class="p">[</span><span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&#39;Alley&#39;</span>
+</pre></div>
+</div>
+<p>and find that category 1 is &#8216;Alley&#8217;</p>
+</div>
+<div class="section" id="selection">
+<h2>Selection<a class="headerlink" href="#selection" title="Permalink to this headline">¶</a></h2>
+<p>Diogenes provides a number of functions to retain only columns and rows
+matching a specific criteria:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.choose_cols_where" title="diogenes.modify.modify.choose_cols_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.choose_cols_where()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.remove_cols_where" title="diogenes.modify.modify.remove_cols_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.remove_cols_where()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.choose_rows_where" title="diogenes.modify.modify.choose_rows_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.choose_rows_where()</span></code></a></li>
+<li><a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.remove_rows_where" title="diogenes.modify.modify.remove_rows_where"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.remove_rows_where()</span></code></a></li>
+</ul>
+<p>These are explained in detail in the module documentation for
+<a class="reference internal" href="../diogenes.modify.html#module-diogenes.modify.modify" title="diogenes.modify.modify"><code class="xref py py-mod docutils literal"><span class="pre">diogenes.modify.modify</span></code></a>. Explaining all the different things you
+can do with these selection operators is outside the scope of this
+tutorial.</p>
+<p>We&#8217;ll start out by removing any columns for which every row is the same
+value by employing the <a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.col_val_eq_any" title="diogenes.modify.modify.col_val_eq_any"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.col_val_eq_any()</span></code></a>
+column selection function:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="n">Counter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Type of Service Request&#39;</span><span class="p">])</span>
+<span class="k">print</span>
+
+<span class="n">arguments</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;func&#39;</span><span class="p">:</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">col_val_eq_any</span><span class="p">,</span> <span class="s">&#39;vals&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">remove_cols_where</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">arguments</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="s">&#39;Creation Date&#39;</span><span class="p">,</span> <span class="s">&#39;Status&#39;</span><span class="p">,</span> <span class="s">&#39;Completion Date&#39;</span><span class="p">,</span> <span class="s">&#39;Service Request Number&#39;</span><span class="p">,</span> <span class="s">&#39;Type of Service Request&#39;</span><span class="p">,</span> <span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">,</span> <span class="s">&#39;Current Activity&#39;</span><span class="p">,</span> <span class="s">&#39;Most Recent Action&#39;</span><span class="p">,</span> <span class="s">&#39;Street Address&#39;</span><span class="p">,</span> <span class="s">&#39;ZIP Code&#39;</span><span class="p">,</span> <span class="s">&#39;X Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;Y Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;Ward&#39;</span><span class="p">,</span> <span class="s">&#39;Police District&#39;</span><span class="p">,</span> <span class="s">&#39;Community Area&#39;</span><span class="p">,</span> <span class="s">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s">&#39;Longitude&#39;</span><span class="p">,</span> <span class="s">&#39;Location&#39;</span><span class="p">)</span>
+
+<span class="n">Counter</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="mi">108493</span><span class="p">})</span>
+
+<span class="p">(</span><span class="s">&#39;Creation Date&#39;</span><span class="p">,</span> <span class="s">&#39;Status&#39;</span><span class="p">,</span> <span class="s">&#39;Completion Date&#39;</span><span class="p">,</span> <span class="s">&#39;Service Request Number&#39;</span><span class="p">,</span> <span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">,</span> <span class="s">&#39;Current Activity&#39;</span><span class="p">,</span> <span class="s">&#39;Most Recent Action&#39;</span><span class="p">,</span> <span class="s">&#39;Street Address&#39;</span><span class="p">,</span> <span class="s">&#39;ZIP Code&#39;</span><span class="p">,</span> <span class="s">&#39;X Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;Y Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;Ward&#39;</span><span class="p">,</span> <span class="s">&#39;Police District&#39;</span><span class="p">,</span> <span class="s">&#39;Community Area&#39;</span><span class="p">,</span> <span class="s">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s">&#39;Longitude&#39;</span><span class="p">,</span> <span class="s">&#39;Location&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that &#8220;Type of Service Request&#8221; has been removed, since every
+value in the column was the same</p>
+<p>Next, let&#8217;s assume that we&#8217;re only interested in requests made during
+the year 2015 and select only those rows using the
+<a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.row_val_between" title="diogenes.modify.modify.row_val_between"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.row_val_between()</span></code></a> row selection function:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Creation Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Creation Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="k">print</span>
+
+<span class="n">arguments</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;func&#39;</span><span class="p">:</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">row_val_between</span><span class="p">,</span>
+              <span class="s">&#39;vals&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s">&#39;2015-01-01T00:00:00&#39;</span><span class="p">,</span> <span class="s">&#39;ns&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s">&#39;2016-01-01T00:00:00&#39;</span><span class="p">,</span> <span class="s">&#39;ns&#39;</span><span class="p">)],</span>
+              <span class="s">&#39;col_name&#39;</span><span class="p">:</span> <span class="s">&#39;Creation Date&#39;</span><span class="p">}]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">choose_rows_where</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">arguments</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Creation Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Creation Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>(108493,)
+2004-07-20T19:00:00.000000000-0500
+2015-11-04T18:00:00.000000000-0600
+
+(15566,)
+2015-01-01T18:00:00.000000000-0600
+2015-11-04T18:00:00.000000000-0600
+</pre></div>
+</div>
+<p>Finally, let&#8217;s remove rows which the &#8220;Status&#8221; column claims are
+duplicates. We review our <code class="docutils literal"><span class="pre">classes</span></code> variable to find:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">classes</span><span class="p">[</span><span class="s">&#39;Status&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">array</span><span class="p">([</span><span class="s">&#39;Completed&#39;</span><span class="p">,</span> <span class="s">&#39;Completed - Dup&#39;</span><span class="p">,</span> <span class="s">&#39;Open&#39;</span><span class="p">,</span> <span class="s">&#39;Open - Dup&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We want to remove rows that have either <code class="docutils literal"><span class="pre">1</span></code> or <code class="docutils literal"><span class="pre">3</span></code> in the status
+column. We don&#8217;t have a row selection function already defined to select
+rows that have one of several discrete values, so we will create one:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">row_val_in</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">vals</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">==</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">==</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span> <span class="n">Counter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Status&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+<span class="k">print</span>
+
+<span class="n">arguments</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;func&#39;</span><span class="p">:</span> <span class="n">row_val_in</span><span class="p">,</span> <span class="s">&#39;vals&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s">&#39;col_name&#39;</span><span class="p">:</span> <span class="s">&#39;Status&#39;</span><span class="p">}]</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">remove_rows_where</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">arguments</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">data2</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span> <span class="n">Counter</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s">&#39;Status&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="mi">15566</span><span class="p">,)</span>
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13806</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1612</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">144</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+
+<span class="p">(</span><span class="mi">13950</span><span class="p">,)</span>
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13806</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">144</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="feature-generation">
+<h2>Feature Generation<a class="headerlink" href="#feature-generation" title="Permalink to this headline">¶</a></h2>
+<p>We can also create new features based on existing data. We&#8217;ll start out
+by generating a feature that calculates the distance of the service
+request from Cloud Gate in downtown Chicago <code class="docutils literal"><span class="pre">(41.882773,</span> <span class="pre">-87.623304)</span></code>
+using <a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.distance_from_point" title="diogenes.modify.modify.distance_from_point"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.distance_from_point()</span></code></a>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">dist_from_cloud_gate</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">distance_from_point</span><span class="p">(</span><span class="mf">41.882773</span><span class="p">,</span> <span class="o">-</span><span class="mf">87.623304</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Latitude&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Longitude&#39;</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">dist_from_cloud_gate</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>[ 12.37824118  13.37711223  18.95988034  26.2061016   20.18279666
+  12.08154288  17.63119029  21.29986356   8.09220669  11.27721597]
+</pre></div>
+</div>
+<p>Now we&#8217;ll put those distances into 10 bins using
+<a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.generate_bin" title="diogenes.modify.modify.generate_bin"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.generate_bin()</span></code></a>.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">dist_binned</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">generate_bin</span><span class="p">(</span><span class="n">dist_from_cloud_gate</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">dist_binned</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now we&#8217;ll make a binary feature that is true if and only if the tree is
+in a parkway in ward 10 using
+<a class="reference internal" href="../diogenes.modify.html#diogenes.modify.modify.where_all_are_true" title="diogenes.modify.modify.where_all_are_true"><code class="xref py py-func docutils literal"><span class="pre">diogenes.modify.modify.where_all_are_true()</span></code></a> (which has similar
+syntax to the selection functions).</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">classes</span><span class="p">[</span><span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&#39;&#39;</span> <span class="s">&#39;Alley&#39;</span> <span class="s">&#39;Parkway&#39;</span> <span class="s">&#39;Vacant Lot&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We note that &#8220;Parkway&#8221; is category 2, so we will select items that equal
+2 in the &#8220;If Yes, where is the debris located?&#8221; column and 10 in the
+&#8220;Ward&#8221; column.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">arguments</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;func&#39;</span><span class="p">:</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">row_val_eq</span><span class="p">,</span>
+              <span class="s">&#39;col_name&#39;</span><span class="p">:</span> <span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">,</span>
+              <span class="s">&#39;vals&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&#39;func&#39;</span><span class="p">:</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">row_val_eq</span><span class="p">,</span>
+              <span class="s">&#39;col_name&#39;</span><span class="p">:</span> <span class="s">&#39;Ward&#39;</span><span class="p">,</span>
+              <span class="s">&#39;vals&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}]</span>
+<span class="n">parkway_in_ward_10</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">modify</span><span class="o">.</span><span class="n">where_all_are_true</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">arguments</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">parkway_in_ward_10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="n">array</span><span class="p">([</span>    <span class="mi">3</span><span class="p">,</span>   <span class="mi">149</span><span class="p">,</span>   <span class="mi">174</span><span class="p">,</span>   <span class="mi">248</span><span class="p">,</span>   <span class="mi">274</span><span class="p">,</span>   <span class="mi">277</span><span class="p">,</span>   <span class="mi">598</span><span class="p">,</span>   <span class="mi">672</span><span class="p">,</span>   <span class="mi">675</span><span class="p">,</span>
+         <span class="mi">698</span><span class="p">,</span>   <span class="mi">796</span><span class="p">,</span>   <span class="mi">945</span><span class="p">,</span>   <span class="mi">949</span><span class="p">,</span>   <span class="mi">963</span><span class="p">,</span>  <span class="mi">1061</span><span class="p">,</span>  <span class="mi">1184</span><span class="p">,</span>  <span class="mi">1206</span><span class="p">,</span>  <span class="mi">1408</span><span class="p">,</span>
+        <span class="mi">1509</span><span class="p">,</span>  <span class="mi">1799</span><span class="p">,</span>  <span class="mi">1902</span><span class="p">,</span>  <span class="mi">2077</span><span class="p">,</span>  <span class="mi">2177</span><span class="p">,</span>  <span class="mi">2185</span><span class="p">,</span>  <span class="mi">2193</span><span class="p">,</span>  <span class="mi">2213</span><span class="p">,</span>  <span class="mi">2215</span><span class="p">,</span>
+        <span class="mi">2230</span><span class="p">,</span>  <span class="mi">2341</span><span class="p">,</span>  <span class="mi">2439</span><span class="p">,</span>  <span class="mi">2444</span><span class="p">,</span>  <span class="mi">2562</span><span class="p">,</span>  <span class="mi">2668</span><span class="p">,</span>  <span class="mi">2683</span><span class="p">,</span>  <span class="mi">2790</span><span class="p">,</span>  <span class="mi">2807</span><span class="p">,</span>
+        <span class="mi">2943</span><span class="p">,</span>  <span class="mi">3181</span><span class="p">,</span>  <span class="mi">3189</span><span class="p">,</span>  <span class="mi">3230</span><span class="p">,</span>  <span class="mi">3232</span><span class="p">,</span>  <span class="mi">3235</span><span class="p">,</span>  <span class="mi">3236</span><span class="p">,</span>  <span class="mi">3237</span><span class="p">,</span>  <span class="mi">3339</span><span class="p">,</span>
+        <span class="mi">3345</span><span class="p">,</span>  <span class="mi">3603</span><span class="p">,</span>  <span class="mi">3609</span><span class="p">,</span>  <span class="mi">3624</span><span class="p">,</span>  <span class="mi">3639</span><span class="p">,</span>  <span class="mi">3824</span><span class="p">,</span>  <span class="mi">3950</span><span class="p">,</span>  <span class="mi">3979</span><span class="p">,</span>  <span class="mi">3998</span><span class="p">,</span>
+        <span class="mi">4002</span><span class="p">,</span>  <span class="mi">4005</span><span class="p">,</span>  <span class="mi">4208</span><span class="p">,</span>  <span class="mi">4224</span><span class="p">,</span>  <span class="mi">4274</span><span class="p">,</span>  <span class="mi">4378</span><span class="p">,</span>  <span class="mi">4391</span><span class="p">,</span>  <span class="mi">4440</span><span class="p">,</span>  <span class="mi">4446</span><span class="p">,</span>
+        <span class="mi">4460</span><span class="p">,</span>  <span class="mi">4486</span><span class="p">,</span>  <span class="mi">4557</span><span class="p">,</span>  <span class="mi">4558</span><span class="p">,</span>  <span class="mi">4630</span><span class="p">,</span>  <span class="mi">4751</span><span class="p">,</span>  <span class="mi">4893</span><span class="p">,</span>  <span class="mi">5074</span><span class="p">,</span>  <span class="mi">5190</span><span class="p">,</span>
+        <span class="mi">5224</span><span class="p">,</span>  <span class="mi">5266</span><span class="p">,</span>  <span class="mi">5288</span><span class="p">,</span>  <span class="mi">5296</span><span class="p">,</span>  <span class="mi">5328</span><span class="p">,</span>  <span class="mi">5372</span><span class="p">,</span>  <span class="mi">5373</span><span class="p">,</span>  <span class="mi">5399</span><span class="p">,</span>  <span class="mi">5531</span><span class="p">,</span>
+        <span class="mi">5603</span><span class="p">,</span>  <span class="mi">5613</span><span class="p">,</span>  <span class="mi">5728</span><span class="p">,</span>  <span class="mi">5729</span><span class="p">,</span>  <span class="mi">5819</span><span class="p">,</span>  <span class="mi">6040</span><span class="p">,</span>  <span class="mi">6052</span><span class="p">,</span>  <span class="mi">6056</span><span class="p">,</span>  <span class="mi">6191</span><span class="p">,</span>
+        <span class="mi">6192</span><span class="p">,</span>  <span class="mi">6517</span><span class="p">,</span>  <span class="mi">6528</span><span class="p">,</span>  <span class="mi">6593</span><span class="p">,</span>  <span class="mi">6682</span><span class="p">,</span>  <span class="mi">7038</span><span class="p">,</span>  <span class="mi">7376</span><span class="p">,</span>  <span class="mi">7387</span><span class="p">,</span>  <span class="mi">7397</span><span class="p">,</span>
+        <span class="mi">7398</span><span class="p">,</span>  <span class="mi">7600</span><span class="p">,</span>  <span class="mi">7883</span><span class="p">,</span>  <span class="mi">7884</span><span class="p">,</span>  <span class="mi">7948</span><span class="p">,</span>  <span class="mi">8132</span><span class="p">,</span>  <span class="mi">8177</span><span class="p">,</span>  <span class="mi">8344</span><span class="p">,</span>  <span class="mi">8499</span><span class="p">,</span>
+        <span class="mi">8516</span><span class="p">,</span>  <span class="mi">8682</span><span class="p">,</span>  <span class="mi">8691</span><span class="p">,</span>  <span class="mi">8699</span><span class="p">,</span>  <span class="mi">8718</span><span class="p">,</span>  <span class="mi">8773</span><span class="p">,</span>  <span class="mi">8776</span><span class="p">,</span>  <span class="mi">8912</span><span class="p">,</span>  <span class="mi">8955</span><span class="p">,</span>
+        <span class="mi">9333</span><span class="p">,</span>  <span class="mi">9424</span><span class="p">,</span>  <span class="mi">9435</span><span class="p">,</span>  <span class="mi">9501</span><span class="p">,</span>  <span class="mi">9518</span><span class="p">,</span>  <span class="mi">9681</span><span class="p">,</span> <span class="mi">10363</span><span class="p">,</span> <span class="mi">10731</span><span class="p">,</span> <span class="mi">10732</span><span class="p">,</span>
+       <span class="mi">10735</span><span class="p">,</span> <span class="mi">11107</span><span class="p">,</span> <span class="mi">11259</span><span class="p">,</span> <span class="mi">11268</span><span class="p">,</span> <span class="mi">11288</span><span class="p">,</span> <span class="mi">11582</span><span class="p">,</span> <span class="mi">11590</span><span class="p">,</span> <span class="mi">11777</span><span class="p">,</span> <span class="mi">11956</span><span class="p">,</span>
+       <span class="mi">12064</span><span class="p">,</span> <span class="mi">12135</span><span class="p">,</span> <span class="mi">13028</span><span class="p">,</span> <span class="mi">13067</span><span class="p">,</span> <span class="mi">13402</span><span class="p">,</span> <span class="mi">13493</span><span class="p">,</span> <span class="mi">13603</span><span class="p">,</span> <span class="mi">13787</span><span class="p">,</span> <span class="mi">14093</span><span class="p">,</span>
+       <span class="mi">14466</span><span class="p">,</span> <span class="mi">14484</span><span class="p">,</span> <span class="mi">14553</span><span class="p">,</span> <span class="mi">14618</span><span class="p">,</span> <span class="mi">14625</span><span class="p">,</span> <span class="mi">14632</span><span class="p">,</span> <span class="mi">14915</span><span class="p">,</span> <span class="mi">15248</span><span class="p">,</span> <span class="mi">15356</span><span class="p">,</span>
+       <span class="mi">15364</span><span class="p">,</span> <span class="mi">15407</span><span class="p">]),)</span>
+</pre></div>
+</div>
+<p>Finally, we&#8217;ll add all of our generated features to our data using
+<a class="reference internal" href="../diogenes.html#diogenes.utils.append_cols" title="diogenes.utils.append_cols"><code class="xref py py-func docutils literal"><span class="pre">diogenes.utils.append_cols()</span></code></a></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">append_cols</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="n">dist_from_cloud_gate</span><span class="p">,</span> <span class="n">dist_binned</span><span class="p">,</span> <span class="n">parkway_in_ward_10</span><span class="p">],</span>
+                                  <span class="p">[</span><span class="s">&#39;dist_from_cloud_gate&#39;</span><span class="p">,</span> <span class="s">&#39;dist_binned&#39;</span><span class="p">,</span> <span class="s">&#39;parkway_in_ward_10&#39;</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[(</span><span class="s">&#39;Creation Date&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;M8[ns]&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Status&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Completion Date&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;M8[ns]&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Service Request Number&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;If Yes, where is the debris located?&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Current Activity&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Most Recent Action&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Street Address&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ZIP Code&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;X Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Y Coordinate&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Ward&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Police District&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Community Area&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Longitude&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Location&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;dist_from_cloud_gate&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;f8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;dist_binned&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;parkway_in_ward_10&#39;</span><span class="p">,</span> <span class="s">&#39;?&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="last-steps">
+<h2>Last steps<a class="headerlink" href="#last-steps" title="Permalink to this headline">¶</a></h2>
+<p>Now, all we have to do is make remove the &#8220;Status&#8221; column from the rest
+of the data (along with the highly correlated &#8220;Completion Date&#8221;) and
+we&#8217;re ready to run an experiment.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Status&#39;</span><span class="p">]</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">remove_cols</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;Status&#39;</span><span class="p">,</span> <span class="s">&#39;Completion Date&#39;</span><span class="p">])</span>
+<span class="n">exp</span> <span class="o">=</span> <span class="n">diogenes</span><span class="o">.</span><span class="n">grid_search</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">exp</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>[Trial(clf=&lt;class &#39;sklearn.ensemble.forest.RandomForestClassifier&#39;&gt;, clf_params={}, subset=&lt;class &#39;diogenes.grid_search.subset.SubsetNoSubset&#39;&gt;, subset_params={}, cv=&lt;class &#39;sklearn.cross_validation.KFold&#39;&gt;, cv_params={})]
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Modify Module</a><ul>
+<li><a class="reference internal" href="#in-place-cleaning">In-place Cleaning</a></li>
+<li><a class="reference internal" href="#selection">Selection</a></li>
+<li><a class="reference internal" href="#feature-generation">Feature Generation</a></li>
+<li><a class="reference internal" href="#last-steps">Last steps</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notebooks/modify.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Diogenes 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, DSaPP.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
