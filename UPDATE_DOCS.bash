@@ -1,8 +1,9 @@
+#!/bin/bash
 git checkout master
 git pull https://github.com/dssg/diogenes.git master
 git push
 git checkout gh-pages
-git pull--no-edit origin master
+git pull --no-edit origin master
 pushd doc
 make clean
 make html
