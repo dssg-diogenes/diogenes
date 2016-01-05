@@ -480,6 +480,29 @@ def row_is_within_region(M, col_names, boundary):
     bbPath = mplPath.Path(np.array(boundary))
     return [bbPath.contains_point(point) for point in M[col_names]]
 
+def row_is_nan(M, col_name, boundary=None):
+    """Picks rows for which cell is np.nan
+
+    To be used as a 'func' argument in choose_rows_where, remove_rows_where, 
+    or where_all_are_true (see module documentation).
+
+    Parameters
+    ----------
+    M : numpy.ndarray
+        structured array
+    col_name : str
+        name of column to check
+    boundary : None
+        unused
+
+    Returns
+    -------
+    numpy.ndarray
+        boolean array: True if row picked, False if not.
+
+    """
+    return np.isnan(M[col_name])
+
 def combine_cols(M, lambd, col_names):
     """Return an array that is the function of existing columns
 
@@ -528,7 +551,7 @@ def combine_mean(*args):
     """
     return np.mean(args)
     
-def label_encode(M):
+def label_encode(M, force_columns=[]):
     """Changes string cols to ints so that there is a 1-1 mapping between 
     strings and ints
 
@@ -536,6 +559,10 @@ def label_encode(M):
     ----------
     M : numpy.ndarray
         structured array
+    force_columns : list of str
+        By default, label_encode will only encode string columns. If the name
+        of a numerical column is also present in force_columns, then that 
+        column will also be label encoded
 
     Returns
     -------
@@ -550,7 +577,7 @@ def label_encode(M):
     result_arrays = []
     classes = {}
     for (col_name, fmt) in M.dtype.descr:
-        if 'S' in fmt or 'O' in fmt:
+        if 'S' in fmt or 'O' in fmt or col_name in force_columns:
             col = M[col_name]
             le = preprocessing.LabelEncoder()
             le.fit(col)
