@@ -1,3 +1,4 @@
+#!/bin/bash
 git checkout master
 git pull https://github.com/dssg/diogenes.git master
 git push
