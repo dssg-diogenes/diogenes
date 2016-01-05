@@ -240,16 +240,16 @@ M-formatted table:</p>
 <p><em>Table 2</em></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
-<col width="22%" />
-<col width="29%" />
-<col width="22%" />
+<col width="21%" />
+<col width="25%" />
+<col width="30%" />
+<col width="25%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">student_id</th>
-<th class="head">math_gpa</th>
-<th class="head">english_gpa</th>
-<th class="head">absences</th>
+<th class="head">math_gpa_AVG</th>
+<th class="head">english_gpa_AVG</th>
+<th class="head">absences_MAX</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -312,7 +312,7 @@ the select_rows_in_M function. For example:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ae</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">get_rg_from_csv</span><span class="p">(</span><span class="s">&#39;table1.csv&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ae</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">set_aggregation</span><span class="p">(</span><span class="s">&#39;math_gpa&#39;</span><span class="p">,</span> <span class="s">&#39;AVG&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ae</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">set_aggregation</span><span class="p">(</span><span class="s">&#39;absences&#39;</span><span class="p">,</span> <span class="s">&#39;MAX&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ae</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">select_rows_in_M</span><span class="p">(</span><span class="s">&#39;math_gpa &lt;= 3.4&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ae</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">select_rows_in_M</span><span class="p">(</span><span class="s">&#39;math_gpa_AVG &lt;= 3.4&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ae</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">set_interval</span><span class="p">(</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">table3</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">emit_M</span><span class="p">()</span>
 </pre></div>
@@ -321,16 +321,16 @@ the select_rows_in_M function. For example:</p>
 <p><em>Table 3:</em></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
-<col width="22%" />
-<col width="29%" />
-<col width="22%" />
+<col width="21%" />
+<col width="25%" />
+<col width="30%" />
+<col width="25%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">student_id</th>
-<th class="head">math_gpa</th>
-<th class="head">english_gpa</th>
-<th class="head">absences</th>
+<th class="head">math_gpa_AVG</th>
+<th class="head">english_gpa_AVG</th>
+<th class="head">absences_MAX</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -348,6 +348,10 @@ the select_rows_in_M function. For example:</p>
 </table>
 <p>Notice that Table 3 is identical to Table 2, except student 1 has been
 omitted because his/her GPA is higher than 3.4.</p>
+<p><strong>Taking labels and features from different time intervals</strong></p>
+<p>If you need to take labels and the rest of your features from different
+time intervals, set the label column with set_label_feature and set the
+label interval with set_label_interval.</p>
 <p><strong>Note on function call semantics</strong></p>
 <p>Most methods of ArrayEmitter return new ArrayEmitters rather than
 modifying the existing ArrayEmitter.</p>
@@ -524,15 +528,16 @@ condition added</td>
 <dl class="method">
 <dt id="diogenes.array_emitter.ArrayEmitter.set_aggregation">
 <code class="descname">set_aggregation</code><span class="sig-paren">(</span><em>feature_name</em>, <em>method</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.array_emitter.ArrayEmitter.set_aggregation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the method used to aggregate across dates in a RG table.</p>
+<dd><p>Sets the method or methods used to aggregate across dates in the
+RG table.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>feature_name</strong> (<em>str</em>) &#8211; Name of feature for which we are aggregating</li>
-<li><strong>method</strong> (<em>str</em>) &#8211; <p>Method used to aggregate the feature across year.
-Can be one of:</p>
+<li><strong>method</strong> (<em>str or list of strs</em>) &#8211; <p>Method or methods used to aggregate the feature across year.
+If a str, can be one of:</p>
 <blockquote>
 <div><ul>
 <li><dl class="first docutils">
@@ -564,6 +569,8 @@ Can be one of:</p>
 </div></blockquote>
 <p>Additionally, method can be any aggregation function supported
 by the database in which the RG table lives.</p>
+<p>If a list, will create one aggregate column for each method
+in the list, for example: [&#8216;AVG&#8217;, &#8216;MIN&#8217;, &#8216;MAX&#8217;]</p>
 </li>
 </ul>
 </td>
@@ -669,10 +676,50 @@ by the database in which the RG table lives.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="diogenes.array_emitter.ArrayEmitter.set_label_feature">
+<code class="descname">set_label_feature</code><span class="sig-paren">(</span><em>feature_name</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.array_emitter.ArrayEmitter.set_label_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the feature in the array which will be considered the label</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Copy of this ArrayGenerator with specified label column</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">ArrayGenerator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="diogenes.array_emitter.ArrayEmitter.set_label_interval">
+<code class="descname">set_label_interval</code><span class="sig-paren">(</span><em>start_time</em>, <em>stop_time</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.array_emitter.ArrayEmitter.set_label_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets interval from which to select labels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start_time</strong> (<em>number or datetime.datetime</em>) &#8211; Start time of log tables to include in this sa&#8217;s labels</li>
+<li><strong>stop_time</strong> (<em>number or datetime.datetime</em>) &#8211; Stop time of log tables to include in this sa&#8217;s labels</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">With label interval set</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#diogenes.array_emitter.ArrayEmitter" title="diogenes.array_emitter.ArrayEmitter">ArrayEmitter</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="diogenes.array_emitter.ArrayEmitter.subset_over">
-<code class="descname">subset_over</code><span class="sig-paren">(</span><em>label_col, interval_train_window_start, interval_train_window_size, interval_test_window_start, interval_test_window_size, interval_inc_value, interval_expanding=False, row_M_col_name=None, row_M_train_window_start=None, row_M_train_window_size=None, row_M_test_window_start=None, row_M_test_window_size=None, row_M_inc_value=None, row_M_expanding=False, clfs=[{'clf': &lt;class 'sklearn.ensemble.forest.RandomForestClassifier'&gt;}], feature_gen_lambda=None</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.array_emitter.ArrayEmitter.subset_over" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subset_over</code><span class="sig-paren">(</span><em>label_col, interval_train_window_start, interval_train_window_end, interval_test_window_start, interval_test_window_end, interval_inc_value, label_col_aggr_of_interest='AVG', interval_expanding=False, label_interval_train_window_start=None, label_interval_train_window_end=None, label_interval_test_window_start=None, label_interval_test_window_end=None, label_interval_inc_value=None, label_interval_expanding=False, row_M_col_name=None, row_M_col_aggr_of_interest='AVG', row_M_train_window_start=None, row_M_train_window_end=None, row_M_test_window_start=None, row_M_test_window_end=None, row_M_inc_value=None, row_M_expanding=False, clfs=[{'clf': &lt;class 'sklearn.ensemble.forest.RandomForestClassifier'&gt;}], feature_gen_lambda=None</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.array_emitter.ArrayEmitter.subset_over" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates ArrayGenerators according to some subsetting directive.</p>
-<p>There are two ways that we determine what the train and test sets are
+<p>There are three ways that we determine what the train and test sets are
 for each trial:</p>
 <ol class="arabic simple">
 <li>The start time/stop time interval. This is the interval used to
@@ -680,6 +727,10 @@ create features in the M-formatted matrix. Setting the start
 time/stop time of this interval is equalivalent to passing values
 to set_interval.  variables pertaining to this interval have the
 interval* prefix.</li>
+<li>The start time/stop time interval for labels. If these values
+are set, then time intervals for the label are different
+than the time intervals for the other features. Variables pertaining
+to this interval have the label_interval* prefix.</li>
 <li>The rows of the M matrix to select, based on the value of some
 column in the M matrix. Setting the start and end of this interval
 is equivalent to passing values to select_rows_in_M. Values
@@ -698,12 +749,24 @@ row_M_col_name is not None</li>
 <li><strong>interval_test_window_start</strong> (<em>number or datetime</em>) &#8211; start of testing interval</li>
 <li><strong>interval_test_window_size</strong> (<em>number or datetime</em>) &#8211; size of testing interval</li>
 <li><strong>interval_inc_value</strong> (<em>datetime, timedelta, or number</em>) &#8211; interval to increment train and test interval</li>
+<li><strong>label_col_aggr_of_interest</strong> (<em>str</em>) &#8211; The type of aggregation which will signify the label
+(for example, use &#8216;AVG&#8217; if the label is the &#8216;AVG&#8217; of the label
+column in the M-formatted matrix)</li>
 <li><strong>interval_expanding</strong> (<em>boolean</em>) &#8211; whether or not the training interval is expanding</li>
+<li><strong>label_interval_train_window_start</strong> (<em>number or datetime or None</em>) &#8211; start of training interval for labels</li>
+<li><strong>label_interval_train_window_size</strong> (<em>number or datetime or None</em>) &#8211; (Initial) size of training interval for labels</li>
+<li><strong>label_interval_test_window_start</strong> (<em>number or datetime or None</em>) &#8211; start of testing interval for labels</li>
+<li><strong>label_interval_test_window_size</strong> (<em>number or datetime or None</em>) &#8211; size of testing interval for labels</li>
+<li><strong>label_interval_inc_value</strong> (<em>datetime, timedelta, or number or None</em>) &#8211; interval to increment train and test interval for labels</li>
+<li><strong>label_interval_expanding</strong> (<em>boolean</em>) &#8211; whether or not the training interval for labels is expanding</li>
 <li><strong>row_M_col_name</strong> (<em>str or None</em>) &#8211; <p>If not None, the name of the feature which will be used to select
 different training and testing sets in addition to the interval</p>
 <p>If None, train and testing sets will use all rows given a
 particular time interval</p>
 </li>
+<li><strong>row_M_col_aggr_of_interest</strong> (<em>str</em>) &#8211; The name of the aggregation used to subset rows of M.
+(For example, use &#8216;AVG&#8217; if we want to select rows based on the
+average of the values in the interval)</li>
 <li><strong>row_M_train_window_start</strong> (<em>? or None</em>) &#8211; Start of train window for M rows. If None, uses
 interval_train_window_start</li>
 <li><strong>row_M_train_window_size</strong> (<em>? or None</em>) &#8211; (Initial) size of train window for M rows. If None, uses
@@ -746,6 +809,50 @@ are fit to classifiers. Must be a function of signature:</p>
 </table>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="diogenes.array_emitter.M_to_rg">
+<code class="descclassname">diogenes.array_emitter.</code><code class="descname">M_to_rg</code><span class="sig-paren">(</span><em>conn_str</em>, <em>from_table</em>, <em>to_table</em>, <em>unit_id_col</em>, <em>start_time_col=None</em>, <em>stop_time_col=None</em>, <em>feature_cols=None</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.array_emitter.M_to_rg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a table in M-format to a table in RG-format</p>
+<p>Data in the M-formatted from_table is appended to the RG-formatted
+to_table. Consequently, the user can run M_to_rg multiple times to
+convert multiple M-formatted tables to the same RG-formatted table</p>
+<p>For character or text columns in from_table, entries will be encoded
+to integers when they are dumped into the RG-formatted table. For each
+of these columns, M_to_rg will create a table with a name of the form:
+[to_table]_encode_[from_table]_[col_name]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conn_str</strong> (<em>str</em>) &#8211; SQLAlchemy connection string to access database</li>
+<li><strong>from_table</strong> (<em>str</em>) &#8211; Name of M-formatted table to convert to RG-formatted table</li>
+<li><strong>to_table</strong> (<em>str</em>) &#8211; <p>Name of RG-formatted table that data will be inserted into. This
+table must either:
+1. Not yet exist in the database or
+2. Adhere to the schema:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>(row_id SERIAL PRIMARY KEY, unit_id INT, start_time TIMESTAMP,</dt>
+<dd>end_time TIMESTAMP, feat TEXT, val REAL);</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><strong>unit_id_col</strong> (<em>str</em>) &#8211; The column in from_table which contains the unique unit ID</li>
+<li><strong>start_time_col</strong> (<em>str or None</em>) &#8211; The column in from_table which contains the start time. If None,
+start times will be left NULL in the RG-formatted array</li>
+<li><strong>stop_time_col</strong> (<em>str or None</em>) &#8211; The column in from_table which contains the stop time. If None,
+stop times will be left NULL in the RG-formatted array</li>
+<li><strong>feature_cols</strong> (<em>list of str or None</em>) &#8211; The columns of from_table which will be inserted into to_table in
+RG-format. If None, will use all columns in from_table except for
+unit_id_col, start_time_col and stop_time_col</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

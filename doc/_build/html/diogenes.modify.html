@@ -373,22 +373,30 @@ column.</li>
 
 <dl class="function">
 <dt id="diogenes.modify.modify.label_encode">
-<code class="descclassname">diogenes.modify.modify.</code><code class="descname">label_encode</code><span class="sig-paren">(</span><em>M</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.modify.modify.label_encode" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">diogenes.modify.modify.</code><code class="descname">label_encode</code><span class="sig-paren">(</span><em>M</em>, <em>force_columns=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.modify.modify.label_encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes string cols to ints so that there is a 1-1 mapping between
 strings and ints</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<em>numpy.ndarray</em>) &#8211; structured array</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>M</strong> (<em>numpy.ndarray</em>) &#8211; structured array</li>
+<li><strong>force_columns</strong> (<em>list of str</em>) &#8211; By default, label_encode will only encode string columns. If the name
+of a numerical column is also present in force_columns, then that
+column will also be label encoded</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>(numpy.ndarray, dict of str</strong> &#8211;
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>(numpy.ndarray, dict of str</strong> &#8211;
 A tuple: the first element is structured array with strings mapped to
 ints. The second element is a dictionary where keys are column names
 and values are arrays of the strings that belong to each class, as in:
-<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html</a></td>
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html</a></p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array)</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array)</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -485,6 +493,33 @@ If False, only returns fitted col</li>
 <li><strong>constant</strong> (<em>int</em>) &#8211; If the &#8216;constant&#8217; strategy is chosen, this is the value to
 replace missing_val with</li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="diogenes.modify.modify.row_is_nan">
+<code class="descclassname">diogenes.modify.modify.</code><code class="descname">row_is_nan</code><span class="sig-paren">(</span><em>M</em>, <em>col_name</em>, <em>boundary=None</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.modify.modify.row_is_nan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Picks rows for which cell is np.nan</p>
+<p>To be used as a &#8216;func&#8217; argument in choose_rows_where, remove_rows_where,
+or where_all_are_true (see module documentation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>M</strong> (<em>numpy.ndarray</em>) &#8211; structured array</li>
+<li><strong>col_name</strong> (<em>str</em>) &#8211; name of column to check</li>
+<li><strong>boundary</strong> (<em>None</em>) &#8211; unused</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">boolean array: True if row picked, False if not.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
 </td>
 </tr>
 </tbody>

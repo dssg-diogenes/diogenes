@@ -226,7 +226,7 @@ Trial: score. Examples are &#8216;average_score&#8217; and &#8216;roc_auc&#8217;
 
 <dl class="function">
 <dt id="diogenes.display.display.crosstab">
-<code class="descclassname">diogenes.display.display.</code><code class="descname">crosstab</code><span class="sig-paren">(</span><em>col1</em>, <em>col2</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.display.display.crosstab" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">diogenes.display.display.</code><code class="descname">crosstab</code><span class="sig-paren">(</span><em>col1</em>, <em>col2</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.display.display.crosstab" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a crosstab of col1 and col2. This is represented as a
 structured array with the following properties:</p>
 <ol class="arabic simple">
@@ -259,7 +259,7 @@ corresponding cell is the number of cooccurrences of x and y</li>
 
 <dl class="function">
 <dt id="diogenes.display.display.describe_cols">
-<code class="descclassname">diogenes.display.display.</code><code class="descname">describe_cols</code><span class="sig-paren">(</span><em>M</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.display.display.describe_cols" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">diogenes.display.display.</code><code class="descname">describe_cols</code><span class="sig-paren">(</span><em>M</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.display.display.describe_cols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns summary statistics for a numpy array</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -623,6 +623,25 @@ clf.pred_proba(...)[-1] in sklearn)</li>
 names will be used instead</li>
 </ul>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="diogenes.display.display.table">
+<code class="descclassname">diogenes.display.display.</code><code class="descname">table</code><span class="sig-paren">(</span><em>col</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#diogenes.display.display.table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a summary or the number of occurrences of each value in the column</p>
+<p>Similar to R&#8217;s table</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>col</strong> (<em>np.ndarray</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">structured array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">np.ndarray</td>
 </tr>
 </tbody>
 </table>
